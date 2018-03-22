@@ -1,7 +1,12 @@
 'use strict';
 
 // TODO: Create a "Cart" constructor that holds quantity, item, an an array of items in the cart
-
+var Cart = function(quantity, itemName){
+  this.quantity = quantity;
+  this.itemName = itemName;
+  Cart.cartArray.push(this);
+};
+Cart.cartArray = [];
 
 // Product Contructor
 var Product = function(filePath, name) {
