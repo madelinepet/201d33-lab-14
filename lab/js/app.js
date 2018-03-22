@@ -1,12 +1,18 @@
 'use strict';
 
-// TODO: Create a "Cart" constructor that holds quantity, item, an an array of items in the cart
-var Cart = function(quantity, itemName){
+// TODO: Create a "Cart" constructor that holds quantity, item, and an array of items in the cart
+var CartFunction = function(quantity, itemName){
   this.quantity = quantity;
   this.itemName = itemName;
-  Cart.cartArray.push(this);
+  CartFunction.Cart.push(this);
 };
-Cart.cartArray = [];
+var Cart = [];
+
+//new function to store cart in local storage
+var storeCart = function(){
+  var saveCart = JSON.stringify(Cart);
+  localStorage.setItem('accessCart', saveCart);
+};
 
 // Product Contructor
 var Product = function(filePath, name) {
@@ -40,4 +46,5 @@ function generateCatalog() {
 }
 
 // Initialize the app
+storeCart();
 generateCatalog();
