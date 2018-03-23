@@ -1,26 +1,31 @@
 'use strict';
 
+var catalog = [];
+
+
 // TODO: Create a "Cart" constructor that holds quantity, item, and an array of items in the cart
-var CartFunction = function(quantity, itemName){
+var makeCart = function(quantity, itemName){
   this.quantity = quantity;
   this.itemName = itemName;
-  CartFunction.Cart.push(this);
+  makeCart.Cart.push(this);
 };
 var Cart = [];
 
 //new function to store cart in local storage
 var storeCart = function(){
   var saveCart = JSON.stringify(Cart);
+  console.log ('cart', Cart);
   localStorage.setItem('accessCart', saveCart);
 };
 
+
 // Product Contructor
-var Product = function(filePath, name) {
+function Product (filePath, itemName) {
   this.filePath = filePath;
-  this.name = name;
+  this.itemName = itemName;
   Product.allProducts.push(this);
-};
-Product.allProducts = [];
+}
+Product.allProducts=[];
 
 function generateCatalog() {
   new Product('assets/bag.jpg', 'Bag');
@@ -44,7 +49,12 @@ function generateCatalog() {
   new Product('assets/water-can.jpg', 'Water Can');
   new Product('assets/wine-glass.jpg', 'Wine Glass');
 }
+// var storeCatalog = function(){
+//   var saveCatalog = JSON.stringify(Product.allProducts);
+//   localStorage.setItem('accessCatalog', saveCatalog);
+// };
 
 // Initialize the app
-storeCart();
+// storeCatalog();
+// storeCart();
 generateCatalog();

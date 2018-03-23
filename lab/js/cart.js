@@ -5,13 +5,14 @@ var Cart = [];
 function loadCart() {
   // TODO: Pull the cart (if it exists) from Local Storage and make available to this app
   var cartString = localStorage.getItem('accessCart');
+  console.log('access cart'+ accessCart);
   var usableCart = JSON.parse(cartString);
   if (Cart && Cart.length){
     Cart = usableCart;
     return;
   }
-//if nothing in cart
-alert('Your cart is empty');
+  //if nothing in cart
+  alert('Your cart is empty. Please return to Storefront and select item and quantity.');
 }
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart

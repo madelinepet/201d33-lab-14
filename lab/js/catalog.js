@@ -3,11 +3,23 @@ var optionTag = document.getElementById('items');
 var newCatalog = document.getElementById('catalog');
 
 function populateForm() {
+  // var catalogString = localStorage.getItem('accessCatalog');
+  // var usableCatalog = JSON.parse(catalogString);
+  // if (saveCatalog && saveCatalog.length){
+  //   saveCatalog = usableCatalog;
+  //   return;
+  // }
 //TODO: Add an <option> tag inside the form's select for each product
-  var option = document.createElement('option');
-  for (var i =0; i < Cart.length; i++) {
-    option.textContent = Cart[i];
-    option.add('option');
+  for (var i in Product.allProducts) {
+
+    var option = document.createElement('option');
+
+
+    option.textContent = Product.allProducts[i].itemName;
+
+  
+    optionTag.appendChild(option);
+    console.log('options tag', optionTag);
   }
 }
 
@@ -24,7 +36,7 @@ function handleSubmit(event) {
 
 function addSelectedItemToCart() {
   // TODO: Add the selected item and quantity to the cart
-  Cart.push();
+  Cart.push
 }
 
 function saveCartToLocalStorage() {
@@ -41,6 +53,6 @@ function updateCartPreview() {
 }
 
 // TODO: Put an event listener on the #catalog so that you can run the "handleSubmit" method when user submits the form (adding an item to their cart)
-newCatalog.addEventListener('submit', handleSubmit);
+// populateForm.newCatalog.addEventListener('submit', handleSubmit);
 // Start it up ...
 populateForm();
